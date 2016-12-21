@@ -177,9 +177,9 @@ class BaseAPI(object):
         for payload in payloads:
             if self.FCM_REQ_PROXIES:
                 response = requests.post(self.FCM_END_POINT, headers=self.request_headers(), data=payload,
-                                         proxies=self.FCM_REQ_PROXIES)
+                                         proxies=self.FCM_REQ_PROXIES, verify=True)
             else:
-                response = requests.post(self.FCM_END_POINT, headers=self.request_headers(), data=payload)
+                response = requests.post(self.FCM_END_POINT, headers=self.request_headers(), data=payload, verify=True)
             self.send_request_responses.append(response)
 
     def parse_responses(self):
